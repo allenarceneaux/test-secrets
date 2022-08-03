@@ -1,4 +1,4 @@
-name: 'Terraform Module Test on GitHub'
+name: 'Test env secrets'
 on: [ push, workflow_dispatch ]
 
 jobs:
@@ -8,11 +8,10 @@ jobs:
     steps:
       - name: dump
         env: 
-          super_secret: ${{secrets.ADFS_USERNAME}}
+          super_secret: ${{secrets.ENV_SECRET}}
         run: |
-          echo "This is the NORMAL SECRET ${{secrets.GHAPP_APP_ID}} environment variable"
-          echo "This is the ORG SECRET ${{secrets.JFROG_URL}} environment variable"
-          echo "This is the ENV SECRET ${{secrets.ADFS_USERNAME}} environment variable"
+          echo "This is the NORMAL SECRET ${{secrets.NORMAL_SECRET}} environment variable"
+          echo "This is the ENV SECRET ${{secrets.ENV_SECRET}} environment variable"
           echo "This is the env SECRET $super_secret environment variable"
 
       - name: 'Dump Env and Secrets'
