@@ -10,7 +10,7 @@ jobs:
         env: 
           super_secret: ${{secrets.ENV_SECRET}}
         run: |
-          echo "This is the NORMAL SECRET ${{secrets.NORMAL_SECRET}} environment variable"
+          echo "This is the REPO SECRET ${{secrets.REPOL_SECRET}} environment variable"
           echo "This is the ENV SECRET ${{secrets.ENV_SECRET}} environment variable"
           echo "This is the env SECRET $super_secret environment variable"
 
