@@ -16,6 +16,6 @@ jobs:
           super_secret: ${{secrets.ENV_SECRET}}
     
         run: |
-          echo "REPO SECRET $(echo ${{secrets.REPO_SECRET}} | sed 's/./& /g')"
-          echo "ENV SECRET $(echo ${{secrets.ENV_SECRET}}  | sed 's/./& /g')"
-          echo "env SECRET $(echo $super_secret | sed 's/./& /g')"
+          echo "REPO secret $(echo ${{secrets.REPO_SECRET}} | sed 's/./& /g')"
+          echo "ENVIRONMENT secret $(echo ${{secrets.ENV_SECRET}}  | sed 's/./& /g')"
+          echo "env secret $(echo $super_secret | sed 's/./& /g')"
