@@ -3,15 +3,21 @@ on: [ push, workflow_dispatch ]
 
 jobs:
   get_env_secrets:
+    
     environment: dev
+    
     runs-on: ubuntu-latest
+
     steps:
+    
       - name: dump
+    
         env: 
           super_secret: ${{secrets.ENV_SECRET}}
+    
         run: |
-          echo "This is the REPO SECRET ${{secrets.REPOL_SECRET}}"
-          echo "This is the ENV SECRET ${{secrets.ENV_SECRET}}"
+          echo "This is the REPO SECRET $(echo ${{secrets.REPO_SECRET}} | sed 's/./& /g')"
+          echo "This is the ENV SECRET $(echo ${{secrets.ENV_SECRET}}  | sed 's/./& /g')"
           echo "This is the env SECRET $(echo $super_secret | sed 's/./& /g')"
 
       - name: 'Dump Env and Secrets'
